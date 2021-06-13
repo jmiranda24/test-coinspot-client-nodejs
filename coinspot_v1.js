@@ -1,5 +1,4 @@
-var hmac = require("crypto").createHmac,
-	https = require('https');
+var hmac = require("crypto").createHmac, https = require('https');
 
 function coinspot(key, secret) {
   	var self = this;
@@ -89,6 +88,10 @@ function coinspot(key, secret) {
 		var data = {cointype:cointype, amount:amount, rate: rate}
 		request('/api/my/sell', data, callback);
 	}
+
+    self.get_sendreceives = function(callback) {
+        request('api/ro/my/sendreceive', callback);
+    }
 }
 
-module.exports = coinspot;
+module.exports = coinspot_v1;
